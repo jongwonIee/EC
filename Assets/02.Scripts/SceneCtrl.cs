@@ -4,10 +4,15 @@ using UnityEngine.SceneManagement;
 
 public class SceneCtrl : MonoBehaviour {
     void Start() {
-        SceneManager.LoadScene("Menu");
 
     }
-    public void OnTouch() {
-        //SceneManager.UnloadScene("_Start");
+    void Awake() {
+        DontDestroyOnLoad(this.gameObject);
+    }
+    public void OnStartTouch() {
+        SceneManager.LoadScene("Menu");
+    }
+    void MoveStage(int stageNum) {
+        SceneManager.LoadScene(stageNum + 2);
     }
 }
