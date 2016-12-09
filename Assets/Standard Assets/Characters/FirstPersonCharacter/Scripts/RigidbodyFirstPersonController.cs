@@ -83,7 +83,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public AdvancedSettings advancedSettings = new AdvancedSettings();
 
 
-        private Rigidbody m_RigidBody;
+        public Rigidbody m_RigidBody;
         private CapsuleCollider m_Capsule;
         private float m_YRotation;
         private Vector3 m_GroundContactNormal;
@@ -130,7 +130,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             RotateView();
 
-            if (CrossPlatformInputManager.GetButtonDown("Jump") && !m_Jump)
+            if (CnControls.CnInputManager.GetButtonDown("Jump") && !m_Jump)
             {
                 m_Jump = true;
             }
@@ -214,8 +214,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
             
             Vector2 input = new Vector2
                 {
-                    x = CrossPlatformInputManager.GetAxis("Horizontal"),
-                    y = CrossPlatformInputManager.GetAxis("Vertical")
+                    x = CnControls.CnInputManager.GetAxis("Horizontal"),
+                    y = CnControls.CnInputManager.GetAxis("Vertical")
                 };
 			movementSettings.UpdateDesiredTargetSpeed(input);
             return input;

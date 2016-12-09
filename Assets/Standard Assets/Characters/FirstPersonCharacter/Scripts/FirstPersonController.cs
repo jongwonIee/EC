@@ -68,11 +68,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
             Debug.DrawRay(m_FirePos.position, m_FirePos.forward * 3.0f, Color.green);
             if (Input.GetMouseButtonDown(0)) { 
             if((Physics.Raycast(m_FirePos.position, m_FirePos.forward, out hit, 3.0f))) {
-                if(hit.collider.tag == "DOOR") {
-
+                    if (hit.collider.tag == "OBJECT" && Input.GetMouseButton(0)) {
+                        hit.collider.gameObject.SendMessage("Action", SendMessageOptions.DontRequireReceiver);
+                    }
                 }
             }
-            }
+
             RotateView();
             // the jump state needs to read here to make sure it is not missed
             if (!m_Jump)
