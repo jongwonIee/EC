@@ -6,12 +6,10 @@ using Random = UnityEngine.Random;
 
 namespace UnityStandardAssets.Characters.FirstPerson
 {
-    [RequireComponent(typeof(CharacterController))]
-    [RequireComponent(typeof(AudioSource))]
+    [RequireComponent(typeof (CharacterController))]
+    [RequireComponent(typeof (AudioSource))]
     public class FirstPersonController : MonoBehaviour
     {
-
-        [SerializeField] private Transform m_FirePos;
         [SerializeField] private bool m_IsWalking;
         [SerializeField] private float m_WalkSpeed;
         [SerializeField] private float m_RunSpeed;
@@ -29,7 +27,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] private AudioClip[] m_FootstepSounds;    // an array of footstep sounds that will be randomly selected from.
         [SerializeField] private AudioClip m_JumpSound;           // the sound played when character leaves the ground.
         [SerializeField] private AudioClip m_LandSound;           // the sound played when character touches back on ground.
-        private Ray ray;
+
         private Camera m_Camera;
         private bool m_Jump;
         private float m_YRotation;
@@ -45,9 +43,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private AudioSource m_AudioSource;
 
         // Use this for initialization
-
-        RaycastHit hit;
-
         private void Start()
         {
             m_CharacterController = GetComponent<CharacterController>();
@@ -62,18 +57,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			m_MouseLook.Init(transform , m_Camera.transform);
         }
 
+
         // Update is called once per frame
         private void Update()
         {
-            Debug.DrawRay(m_FirePos.position, m_FirePos.forward * 3.0f, Color.green);
-            if (Input.GetMouseButtonDown(0)) { 
-            if((Physics.Raycast(m_FirePos.position, m_FirePos.forward, out hit, 3.0f))) {
-                    if (hit.collider.tag == "OBJECT" && Input.GetMouseButton(0)) {
-                        hit.collider.gameObject.SendMessage("Action", SendMessageOptions.DontRequireReceiver);
-                    }
-                }
-            }
-
             RotateView();
             // the jump state needs to read here to make sure it is not missed
             if (!m_Jump)
