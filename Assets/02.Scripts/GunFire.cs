@@ -8,6 +8,11 @@ public class GunFire : MonoBehaviour {
     private Animation gunanim;
     private AudioSource _audio;
 
+    public float Range = 50.0f;
+    public Transform firePos;
+    public int GunDamage = 5;
+    public float TargetDistance;
+
     void Start() 
     {   
         _audio = GetComponent<AudioSource>();
@@ -18,6 +23,22 @@ public class GunFire : MonoBehaviour {
         if (CnControls.CnInputManager.GetButtonDown("Fire1"))
         {
             Fire();
+
+            RaycastHit hit;
+
+            if (Physics.Raycast(firePos.position, firePos.forward, out hit, Range))
+            {
+                if (hit.collider.tag == "MONSTER")
+                {
+                    object[] _params = new object[2];
+                    _params[0] = hit.point;
+                    _params[1] = GunDamage;
+
+                    hit.collider.gameObject.SendMessage("OnDamage"
+                                                        , _params
+                                                        , SendMessageOptions.DontRequireReceiver);
+                }
+            }
         }
 	}
 
