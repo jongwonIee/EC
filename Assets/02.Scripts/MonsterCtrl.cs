@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MonsterCtrl : MonoBehaviour {
     
-    private float hp = 20.0f;
+    public float hp = 10.0f;
 
 	// Use this for initialization
 	void Start () {
