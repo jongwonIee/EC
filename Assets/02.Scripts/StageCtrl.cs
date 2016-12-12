@@ -11,9 +11,7 @@ public class StageCtrl : MonoBehaviour {
 	}
 
     void Awake() {
-        DontDestroyOnLoad(GameObject.Find("Playerr"));
-        DontDestroyOnLoad(GameObject.Find("Controller"));
-        DontDestroyOnLoad(GameObject.Find("EventSystem"));
+        DontDestroyOnLoad(GameObject.Find("Player"));
     }
 
     void Update () {
