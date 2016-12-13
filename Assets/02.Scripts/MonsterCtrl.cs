@@ -1,19 +1,80 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class MonsterCtrl : MonoBehaviour {
     
-    public float hp = 10.0f;
+
+	public enum MonsterState {
+		idle, trace, attack, die
+	};
+	public MonsterState monsterState = MonsterState.idle;
+    
+	public float hp = 10.0f;
+	public float traceDist = 20.0f;
+	public float attackDist = 2.0f;
+
+	private bool isDie = false;
+
+	private Transform monsterTr;
+	private Transform playerTr;
+	private NavMeshAgent nvAgent;
+	private Animator animator;
 
 	// Use this for initialization
 	void Start () {
-		
-	}
+		monsterTr = this.gameObject.GetComponent<Transform> ();
+		//slow so not in update func
+		playerTr = GameObject.FindWithTag ("Player").GetComponent<Transform> ();
+		nvAgent = this.gameObject.GetComponent<NavMeshAgent> ();
+		nvAgent.destination = playerTr.position;
+
+		animator = this.gameObject.GetComponent<Animator> ();
 	
-	// Update is called once per frame
-	void Update () {
-		
+		StartCoroutine (this.CheckMonsterState ());
+		StartCoroutine (this.MonsterAction ());
+	}
+
+	IEnumerator CheckMonsterState()
+	{
+		while (!isDie)
+		{
+			yield return new WaitForSeconds (0.2f);
+			float dist = Vector3.Distance (playerTr.position, monsterTr.position);
+
+			if (dist <= attackDist) {
+				monsterState = MonsterState.attack;
+			}
+			else if (dist <= traceDist) {
+				monsterState = MonsterState.trace;
+			}
+			else {
+				monsterState = MonsterState.idle;
+			}
+		}
+	}
+
+	IEnumerator MonsterAction()
+	{
+		while (!isDie)
+		{
+			switch (monsterState){
+			case MonsterState.idle:
+					nvAgent.Stop ();
+					animator.SetBool ("IsTrace", false);
+					break;
+				case MonsterState.trace:
+					nvAgent.destination = playerTr.position;
+					nvAgent.Resume ();
+					animator.SetBool ("IsTrace", true);
+					break;
+
+				case MonsterState.attack:
+					break;
+			}
+			yield return null;	
+		}
 	}
 
     void OnDamage(object[] _params)
