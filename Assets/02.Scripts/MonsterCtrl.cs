@@ -87,8 +87,22 @@ public class MonsterCtrl : MonoBehaviour {
         hp -= (int) _params[1];
         if (hp <= 0.0f)
         {
-//            MonsterDie();
+            MonsterDie();
             Debug.Log("Dead!");
         }      
     }
+
+	void MonsterDie(){
+		StopAllCoroutines ();
+		isDie = true;
+		monsterState = MonsterState.die;
+		nvAgent.Stop ();
+		animator.SetTrigger ("IsDie");
+		gameObject.gameObject.GetComponentInChildren<CapsuleCollider> ().enabled = false;
+
+		foreach (Collider coll in gameObject.GetComponentsInChildren<SphereCollider>()) {
+			coll.enabled = false;
+		}
+		Destroy (gameObject, 2);
+	}
 }
