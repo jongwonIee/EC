@@ -67,12 +67,13 @@ public class MonsterCtrl : MonoBehaviour {
 				case MonsterState.trace:
 					nvAgent.destination = playerTr.position;
 					nvAgent.Resume ();
+					animator.SetBool ("IsAttack", false);
 					animator.SetBool ("IsTrace", true);
 				break;
 
-				case MonsterState.attack:
-					nvAgent.Stop ();
-					animator.SetBool ("IsAttack", true);
+			case MonsterState.attack:
+				nvAgent.Stop ();
+				animator.SetBool ("IsAttack", true);
 				break;
 			}
 			yield return null;	
@@ -80,7 +81,8 @@ public class MonsterCtrl : MonoBehaviour {
 	}
 
     void OnDamage(object[] _params)
-    {
+    {	
+		animator.SetTrigger("IsHit");
         Debug.Log("Hit!");
         hp -= (int) _params[1];
         if (hp <= 0.0f)
