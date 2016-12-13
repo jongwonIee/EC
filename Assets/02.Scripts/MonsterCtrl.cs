@@ -60,18 +60,20 @@ public class MonsterCtrl : MonoBehaviour {
 		while (!isDie)
 		{
 			switch (monsterState){
-			case MonsterState.idle:
+				case MonsterState.idle:
 					nvAgent.Stop ();
 					animator.SetBool ("IsTrace", false);
-					break;
+				break;
 				case MonsterState.trace:
 					nvAgent.destination = playerTr.position;
 					nvAgent.Resume ();
 					animator.SetBool ("IsTrace", true);
-					break;
+				break;
 
 				case MonsterState.attack:
-					break;
+					nvAgent.Stop ();
+					animator.SetBool ("IsAttack", true);
+				break;
 			}
 			yield return null;	
 		}
