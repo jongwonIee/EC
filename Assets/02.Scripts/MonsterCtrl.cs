@@ -102,13 +102,12 @@ public class MonsterCtrl : MonoBehaviour {
 		monsterState = MonsterState.die;
 		nvAgent.Stop ();
 		animator.SetTrigger ("IsDie");
-		gameObject.gameObject.GetComponentInChildren<CapsuleCollider> ().enabled = false;
+        gameObject.gameObject.GetComponentInChildren<BoxCollider> ().enabled = false;
 
-		foreach (Collider coll in gameObject.GetComponentsInChildren<SphereCollider>()) {
+		foreach (Collider coll in gameObject.GetComponentsInChildren<BoxCollider>()) {
 			coll.enabled = false;
 		}
+        gameUI.DispScore (50);
 		Destroy (gameObject, 2);
-
-		gameUI.DispScore (50);
 	}
 }

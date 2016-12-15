@@ -57,7 +57,7 @@ public class GunFire : MonoBehaviour {
         inGameUI.aimPoint.color = Color.white;
         inGameUI.aimPointCenter.color = Color.white; 
         this.GetComponent<GunFire>().enabled=false;
-        inGameUI.enabled=false;
+        inGameUI.enabled = false;
     }
 
     void EnableScript()
@@ -68,7 +68,7 @@ public class GunFire : MonoBehaviour {
     IEnumerator Delay() {
         yield return new WaitForSeconds(2);
         this.GetComponent<GunFire>().enabled=true;
-        inGameUI.enabled=true;
+        inGameUI.enabled = true;
     }
 
 }
