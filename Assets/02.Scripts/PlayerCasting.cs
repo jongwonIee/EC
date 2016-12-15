@@ -8,7 +8,7 @@ public class PlayerCasting : MonoBehaviour {
     public float Range = 5.0f;
     public float TargetDistance;
     public Transform firePos;
-
+    public GameObject musicObject;
 
     void Update () {
         RaycastHit hit;
@@ -21,6 +21,7 @@ public class PlayerCasting : MonoBehaviour {
                 if (TargetDistance < Range && hit.collider.tag == "OBJECT")
                 {
                     Action();
+                    hit.collider.tag = "Untagged";
                 }
             }
         }
@@ -29,5 +30,6 @@ public class PlayerCasting : MonoBehaviour {
     void Action()
     {
         Debug.Log("actionactivated");
+        musicObject.SetActive(true);
     }
 }
