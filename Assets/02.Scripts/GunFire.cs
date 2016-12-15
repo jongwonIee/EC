@@ -8,10 +8,12 @@ public class GunFire : MonoBehaviour {
     private Animation gunanim;
     private AudioSource _audio;
 
-    public float Range = 50.0f;
+    public float Range = 5.0f;
     public Transform firePos;
     public int GunDamage = 5;
     public float TargetDistance;
+
+    public InGameUI inGameUI;
 
     void Start() 
     {   
@@ -20,31 +22,53 @@ public class GunFire : MonoBehaviour {
     }
 
 	void Update () {
+        RaycastHit hit;
+
         if (CnControls.CnInputManager.GetButtonDown("Fire1"))
         {
             Fire();
 
-            RaycastHit hit;
-
-            if (Physics.Raycast(firePos.position, firePos.forward, out hit, Range))
+            if (Physics.Raycast(firePos.position, firePos.TransformDirection(Vector3.forward), out hit))
             {
-                if (hit.collider.tag == "MONSTER")
+                TargetDistance = hit.distance;
+                if (TargetDistance < Range)
                 {
-                    object[] _params = new object[2];
-                    _params[0] = hit.point;
-                    _params[1] = GunDamage;
+                    if (hit.collider.tag == "MONSTER")
+                    {
+                        
+                        object[] _params = new object[2];
+                        _params[0] = hit.point;
+                        _params[1] = GunDamage;
 
-                    hit.collider.gameObject.SendMessage("OnDamage"
-                                                        , _params
-                                                        , SendMessageOptions.DontRequireReceiver);
+                        hit.collider.gameObject.SendMessage("OnDamage"
+                                                            , _params
+                                                            , SendMessageOptions.DontRequireReceiver);
+                    }
                 }
             }
+
+            EnableScript();
         }
 	}
 
     void Fire()
     {
         _audio.PlayOneShot(fireSfx, 1.0f);
-        gunanim.Play("GunShot");
+        inGameUI.aimPoint.color = Color.white;
+        inGameUI.aimPointCenter.color = Color.white; 
+        this.GetComponent<GunFire>().enabled=false;
+        inGameUI.enabled=false;
     }
+
+    void EnableScript()
+    {   
+        StartCoroutine(Delay());
+    }
+
+    IEnumerator Delay() {
+        yield return new WaitForSeconds(2);
+        this.GetComponent<GunFire>().enabled=true;
+        inGameUI.enabled=true;
+    }
+
 }
