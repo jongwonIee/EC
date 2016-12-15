@@ -22,6 +22,8 @@ public class MonsterCtrl : MonoBehaviour {
 	private NavMeshAgent nvAgent;
 	private Animator animator;
 
+	private InGameUI gameUI;
+
 	// Use this for initialization
 	void Start () {
 		monsterTr = this.gameObject.GetComponent<Transform> ();
@@ -34,13 +36,15 @@ public class MonsterCtrl : MonoBehaviour {
 	
 		StartCoroutine (this.CheckMonsterState ());
 		StartCoroutine (this.MonsterAction ());
+
+		gameUI = GameObject.Find ("InGameUI").GetComponent<InGameUI> ();
 	}
 
 	IEnumerator CheckMonsterState()
 	{
 		while (!isDie)
 		{
-			yield return new WaitForSeconds (0.2f);
+			yield return new WaitForSeconds (0.02f);
 			float dist = Vector3.Distance (playerTr.position, monsterTr.position);
 
 			if (dist <= attackDist) {
@@ -70,11 +74,10 @@ public class MonsterCtrl : MonoBehaviour {
 					animator.SetBool ("IsAttack", false);
 					animator.SetBool ("IsTrace", true);
 				break;
-
-			case MonsterState.attack:
-				nvAgent.Stop ();
-				animator.SetBool ("IsAttack", true);
-				break;
+				case MonsterState.attack:
+					nvAgent.Stop ();
+					animator.SetBool ("IsAttack", true);
+					break;
 			}
 			yield return null;	
 		}
@@ -85,6 +88,7 @@ public class MonsterCtrl : MonoBehaviour {
 		animator.SetTrigger("IsHit");
         Debug.Log("Hit!");
         hp -= (int) _params[1];
+		gameUI.DispScore (10);
         if (hp <= 0.0f)
         {
             MonsterDie();
@@ -104,5 +108,7 @@ public class MonsterCtrl : MonoBehaviour {
 			coll.enabled = false;
 		}
 		Destroy (gameObject, 2);
+
+		gameUI.DispScore (50);
 	}
 }
