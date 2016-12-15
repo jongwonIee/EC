@@ -9,6 +9,7 @@ public class PlayerCasting : MonoBehaviour {
     public float TargetDistance;
     public Transform firePos;
     public GameObject musicObject;
+    public GameObject lightObject;
 
     void Update () {
         RaycastHit hit;
@@ -31,5 +32,6 @@ public class PlayerCasting : MonoBehaviour {
     {
         Debug.Log("actionactivated");
         musicObject.SetActive(true);
+        lightObject.SetActive(false);
     }
 }
