@@ -52,7 +52,6 @@ namespace CnControls
             // And register them in our input system
             CnInputManager.RegisterVirtualAxis(_horizintalAxis);
             CnInputManager.RegisterVirtualAxis(_verticalAxis);
-
         }
 
         private void OnDisable()
@@ -75,6 +74,7 @@ namespace CnControls
             {
                 _verticalAxis.Value = eventData.delta.y;
             }
+
             _lastDragFrameNumber = Time.renderedFrameCount;
         }
 
