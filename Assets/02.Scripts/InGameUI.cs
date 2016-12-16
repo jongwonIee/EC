@@ -35,8 +35,7 @@ public class InGameUI : MonoBehaviour {
     void Update (){
         RaycastHit hit;
 
-        if (Physics.Raycast (firePos.position, firePos.TransformDirection(Vector3.forward), out hit))
-        {
+        if (Physics.Raycast(firePos.position, firePos.forward, out hit)) {
             TargetDistance = hit.distance;
             if (TargetDistance < Range && hit.collider.tag == "MONSTER")
             {
