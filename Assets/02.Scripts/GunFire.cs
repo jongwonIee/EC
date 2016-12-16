@@ -53,6 +53,7 @@ public class GunFire : MonoBehaviour {
 
     void Fire()
     {
+        gunanim.Play();
         _audio.PlayOneShot(fireSfx, 1.0f);
         inGameUI.aimPoint.color = Color.white;
         inGameUI.aimPointCenter.color = Color.white; 
@@ -66,7 +67,7 @@ public class GunFire : MonoBehaviour {
     }
 
     IEnumerator Delay() {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         this.GetComponent<GunFire>().enabled=true;
         inGameUI.enabled = true;
     }
