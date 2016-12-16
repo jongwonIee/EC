@@ -2,11 +2,9 @@
 using System.Collections;
 
 public class Summon : MonoBehaviour {
-    public GameObject respawnPrefab;
-    public GameObject respawn;
     void Start() {
-        if (respawn == null)
-            respawn = GameObject.FindGameObjectWithTag("Respawn");
-        Instantiate(respawnPrefab, respawn.transform.position, respawn.transform.rotation);
+        GameObject Player = GameObject.FindGameObjectWithTag("Player");
+        GameObject.Find("Player/Controller/PanelScore").SetActive(true);
+        Player.transform.position = GameObject.Find("SpawnPoint").transform.position;
     }
 }
