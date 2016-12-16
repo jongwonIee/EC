@@ -2,14 +2,11 @@
 using System.Collections;
 
 public class Summon : MonoBehaviour {
-    void Awake() {
-        GameObject.Find("Playerr").transform.position = GameObject.Find("SpawnPoint").transform.position;
+    public GameObject respawnPrefab;
+    public GameObject respawn;
+    void Start() {
+        if (respawn == null)
+            respawn = GameObject.FindGameObjectWithTag("Respawn");
+        Instantiate(respawnPrefab, respawn.transform.position, respawn.transform.rotation);
     }
-	void Start () {
-	
-	}
-	
-	void Update () {
-	
-	}
 }

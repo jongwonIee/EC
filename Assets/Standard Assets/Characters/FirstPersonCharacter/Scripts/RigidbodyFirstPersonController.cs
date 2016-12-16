@@ -11,10 +11,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [Serializable]
         public class MovementSettings
         {
-            public float ForwardSpeed = 3.0f;   // Speed when walking forward
-            public float BackwardSpeed = 2.0f;  // Speed when walking backwards
-            public float StrafeSpeed = 2.0f;    // Speed when walking sideways
-            public float RunMultiplier = 1.5f;   // Speed when sprinting
+            public float ForwardSpeed = 8.0f;   // Speed when walking forward
+            public float BackwardSpeed = 4.0f;  // Speed when walking backwards
+            public float StrafeSpeed = 4.0f;    // Speed when walking sideways
+            public float RunMultiplier = 2.0f;   // Speed when sprinting
 	        public KeyCode RunKey = KeyCode.LeftShift;
             public float JumpForce = 30f;
             public AnimationCurve SlopeCurveModifier = new AnimationCurve(new Keyframe(-90.0f, 1.0f), new Keyframe(0.0f, 1.0f), new Keyframe(90.0f, 0.0f));
@@ -83,12 +83,17 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public AdvancedSettings advancedSettings = new AdvancedSettings();
 
 
-        public Rigidbody m_RigidBody;
+        private Rigidbody m_RigidBody;
         private CapsuleCollider m_Capsule;
         private float m_YRotation;
         private Vector3 m_GroundContactNormal;
         private bool m_Jump, m_PreviouslyGrounded, m_Jumping, m_IsGrounded;
 
+
+        public Vector3 Velocity
+        {
+            get { return m_RigidBody.velocity; }
+        }
 
         public bool Grounded
         {
@@ -121,15 +126,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
         }
 
 
-        public Vector3 Velocity {
-            get { return m_RigidBody.velocity; }
-        }
-
         private void Update()
         {
             RotateView();
 
-            if (CnControls.CnInputManager.GetButtonDown("Jump") && !m_Jump)
+            if (CrossPlatformInputManager.GetButtonDown("Jump") && !m_Jump)
             {
                 m_Jump = true;
             }
@@ -211,10 +212,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private Vector2 GetInput()
         {
             
-            Vector2 input = new Vector2 {
-                x = CnControls.CnInputManager.GetAxis("Horizontal"),
-                y = CnControls.CnInputManager.GetAxis("Vertical")
-            };
+            Vector2 input = new Vector2
+                {
+                    x = CrossPlatformInputManager.GetAxis("Horizontal"),
+                    y = CrossPlatformInputManager.GetAxis("Vertical")
+                };
 			movementSettings.UpdateDesiredTargetSpeed(input);
             return input;
         }

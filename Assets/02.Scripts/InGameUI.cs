@@ -8,7 +8,7 @@ public class InGameUI : MonoBehaviour {
     public float Range = 5.0f;
     public float TargetDistance;
     public Transform firePos;
-	public Text txtScore;
+    public Text txtScore;
     public RawImage aimPoint;
     public RawImage aimPointCenter;
 	public int totScore = 0;
@@ -19,7 +19,8 @@ public class InGameUI : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		totScore = PlayerPrefs.GetInt ("TOT_SCORE", 0);
-		DispScore (0);	
+   //     firePos = GameObject.FindGameObjectWithTag("Player").transform;
+        DispScore (0);	
 	}
 
 	public void DispScore(int score)
