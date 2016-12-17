@@ -11,6 +11,7 @@ public class GunFire : MonoBehaviour {
     public float Range = 50.0f;
     public Transform firePos;
     public int GunDamage = 5;
+    public int GunHeadDamage = 15;
     public float TargetDistance;
 
     public InGameUI inGameUI;
@@ -32,15 +33,19 @@ public class GunFire : MonoBehaviour {
             {
                 if (hit.collider.tag == "HEAD")
                 {
-                    //
-
+                    object[] _params = new object[2];
+                    _params[0] = hit.point;
+                    _params[1] = GunHeadDamage;
+                    hit.collider.gameObject.SendMessageUpwards("OnDamage"
+                                                        , _params
+                                                        , SendMessageOptions.DontRequireReceiver);
+                    Debug.Log("HEADSHOT");
                 }
                 else
                 {
                     object[] _params = new object[2];
                     _params[0] = hit.point;
                     _params[1] = GunDamage;
-
                     hit.collider.gameObject.SendMessage("OnDamage"
                                                         , _params
                                                         , SendMessageOptions.DontRequireReceiver);

@@ -45,7 +45,7 @@ public class InGameUI : MonoBehaviour {
         if (Physics.Raycast (firePos.position, firePos.TransformDirection(Vector3.forward), out hit))
         {
             TargetDistance = hit.distance;
-            if (TargetDistance < FireRange && hit.collider.tag == "MONSTER")
+            if (TargetDistance < FireRange && hit.collider.tag == "MONSTER" || hit.collider.tag == "HEAD")
             {
                 aimPoint.color = Color.red;
                 aimPointCenter.color = Color.red;
