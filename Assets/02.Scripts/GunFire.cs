@@ -54,7 +54,6 @@ public class GunFire : MonoBehaviour {
     void Fire()
     {
         gunanim.Play();
-        _audio.Play();
         _audio.PlayOneShot(fireSfx, 1.0f);
         inGameUI.aimPoint.color = Color.white;
         inGameUI.aimPointCenter.color = Color.white; 
