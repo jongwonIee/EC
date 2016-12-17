@@ -23,12 +23,12 @@ public class GunFire : MonoBehaviour {
 
 	void Update () {
         RaycastHit hit;
-        Debug.DrawRay(firePos.position, firePos.forward, Color.red);
 
         if (CnControls.CnInputManager.GetButtonDown("Fire1"))
         {
             Fire();
-            if ( Physics.Raycast(firePos.position, firePos.forward, out hit))
+
+            if (Physics.Raycast(firePos.position, firePos.TransformDirection(Vector3.forward), out hit))
             {
                 TargetDistance = hit.distance;
                 if (TargetDistance < Range)
