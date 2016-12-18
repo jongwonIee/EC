@@ -73,11 +73,13 @@ public class MonsterCtrl : MonoBehaviour {
 					nvAgent.Resume ();
 					animator.SetBool ("IsAttack", false);
 					animator.SetBool ("IsTrace", true);
+//                    monsterTr.LookAt(playerTr.position);
+                    //오차 나면  slerp
 				break;
-				case MonsterState.attack:
-					nvAgent.Stop ();
-					animator.SetBool ("IsAttack", true);
-					break;
+                case MonsterState.attack:
+                    nvAgent.Stop();
+                    animator.SetBool("IsAttack", true);
+				break;
 			}
 			yield return null;	
 		}
@@ -110,4 +112,8 @@ public class MonsterCtrl : MonoBehaviour {
         gameUI.DispScore (50);
 		Destroy (gameObject, 2);
 	}
+
+    void Attack() {
+        Debug.Log("Attack");
+    }
 }
