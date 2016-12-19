@@ -33,9 +33,10 @@ public class GunFire : MonoBehaviour {
             {
                 if (hit.collider.tag == "HEAD")
                 {
-                    object[] _params = new object[2];
+                    object[] _params = new object[3];
                     _params[0] = hit.point;
                     _params[1] = GunHeadDamage;
+                    _params[2] = 100;
                     hit.collider.gameObject.SendMessageUpwards("OnDamage"
                                                         , _params
                                                         , SendMessageOptions.DontRequireReceiver);
@@ -43,9 +44,10 @@ public class GunFire : MonoBehaviour {
                 }
                 else
                 {
-                    object[] _params = new object[2];
+                    object[] _params = new object[3];
                     _params[0] = hit.point;
                     _params[1] = GunDamage;
+                    _params[2] = 20;
                     hit.collider.gameObject.SendMessage("OnDamage"
                                                         , _params
                                                         , SendMessageOptions.DontRequireReceiver);

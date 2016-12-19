@@ -90,7 +90,7 @@ public class MonsterCtrl : MonoBehaviour {
 		animator.SetTrigger("IsHit");
         Debug.Log("Hit!");
         hp -= (int) _params[1];
-		gameUI.DispScore (10);
+        gameUI.DispScore ((int) _params[2]);
         if (hp <= 0.0f)
         {
             MonsterDie();
