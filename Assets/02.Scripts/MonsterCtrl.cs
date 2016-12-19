@@ -16,6 +16,7 @@ public class MonsterCtrl : MonoBehaviour {
 	public float attackDist = 2.0f;
 
 	private bool isDie = false;
+    private bool isHit = false;
 
 	private Transform monsterTr;
 	private Transform playerTr;
@@ -47,12 +48,17 @@ public class MonsterCtrl : MonoBehaviour {
 			yield return new WaitForSeconds (0.02f);
 			float dist = Vector3.Distance (playerTr.position, monsterTr.position);
 
-			if (dist <= attackDist) {
-				monsterState = MonsterState.attack;
-			}
-			else if (dist <= traceDist) {
-				monsterState = MonsterState.trace;
-			}
+            if (dist <= attackDist)
+            {
+                monsterState = MonsterState.attack;
+            }
+            else if (dist <= traceDist)
+            {
+                monsterState = MonsterState.trace;
+            }
+            else if (isHit) {
+                monsterState = MonsterState.trace;
+            }
 			else {
 				monsterState = MonsterState.idle;
 			}
@@ -87,6 +93,7 @@ public class MonsterCtrl : MonoBehaviour {
 
     void OnDamage(object[] _params)
     {	
+        isHit = true;
 		animator.SetTrigger("IsHit");
         Debug.Log("Hit!");
         hp -= (int) _params[1];
@@ -95,7 +102,7 @@ public class MonsterCtrl : MonoBehaviour {
         {
             MonsterDie();
             Debug.Log("Dead!");
-        }      
+        }
     }
 
 	void MonsterDie(){
