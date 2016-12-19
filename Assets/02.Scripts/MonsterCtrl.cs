@@ -56,7 +56,7 @@ public class MonsterCtrl : MonoBehaviour {
             {
                 monsterState = MonsterState.trace;
             }
-            else if (isHit) {
+            else if (isHit && dist > attackDist) {
                 monsterState = MonsterState.trace;
             }
 			else {
@@ -80,7 +80,7 @@ public class MonsterCtrl : MonoBehaviour {
 					animator.SetBool ("IsAttack", false);
 					animator.SetBool ("IsTrace", true);
 //                    monsterTr.LookAt(playerTr.position);
-                    //오차 나면  slerp
+//                    slerp
 				break;
                 case MonsterState.attack:
                     nvAgent.Stop();
