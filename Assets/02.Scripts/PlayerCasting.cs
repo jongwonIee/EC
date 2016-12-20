@@ -19,19 +19,16 @@ public class PlayerCasting : MonoBehaviour {
             if (Physics.Raycast (firePos.position, firePos.TransformDirection(Vector3.forward), out hit))
             {
                 TargetDistance = hit.distance;
+
                 if (TargetDistance < Range && hit.collider.tag == "OBJECT")
                 {
-                    Action();
+                    lightObject = hit.transform.Find("lightObject").gameObject;
+                    lightObject.SetActive(false);
+                    musicObject = hit.transform.Find("musicObject").gameObject;
+                    musicObject.SetActive(true);
                     hit.collider.tag = "Untagged";
                 }
             }
         }
-    }
-
-    void Action()
-    {
-        Debug.Log("actionactivated");
-        musicObject.SetActive(true);
-        lightObject.SetActive(false);
     }
 }
