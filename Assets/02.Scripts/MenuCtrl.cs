@@ -26,7 +26,7 @@ public class MenuCtrl : MonoBehaviour {
         canvas[3].SetActive(true);
         Time.timeScale = 1;
 
-        if(canvas[])
+        //if(canvas[])
         //if Main Menu is on, turn off.
 
     }
