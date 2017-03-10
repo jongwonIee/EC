@@ -1,16 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor.SceneManagement;
 
 public class MenuCtrl : MonoBehaviour {
     public GameObject[] canvas;
+    private bool OnMenu;
+
     public void pause() {
-        canvas[0].SetActive(true);
-        canvas[1].SetActive(false);
-        canvas[2].SetActive(true);
-        canvas[3].SetActive(false);
+        canvas[0].SetActive(true);  //Panel
+        canvas[1].SetActive(false); //pause
+        canvas[2].SetActive(true);  //Play
+        canvas[3].SetActive(true); //Text
         Time.timeScale = 0;
 
+        if (OnMenu == false)
+        {
+            //turn on exit Main Menu
+        }
     }
     public void exitPause() {
         canvas[0].SetActive(false);
@@ -18,6 +25,10 @@ public class MenuCtrl : MonoBehaviour {
         canvas[2].SetActive(false);
         canvas[3].SetActive(true);
         Time.timeScale = 1;
+
+        //if(canvas[])
+        //if Main Menu is on, turn off.
+
     }
 
     public void buttonMainMenu() {
