@@ -33,10 +33,11 @@ public class InGameUI : MonoBehaviour {
 	public void DispScore(int score)
 	{
 		totScore += score;
-		txtScore.text = "SCORE  : " + totScore.ToString () + " " + "AREA1  : 6 AREA2 : 3 AREA3 : 9";
+        txtScore.text = "SCORE  : " + totScore.ToString() + " " + "AREA1: " + totScore.ToString() + "AREA2 : 3 AREA3 : 9";
 	
 
 		PlayerPrefs.SetInt("TOT_SOCRE", totScore);
+        PlayerPrefs.Save();
 	}
 
     void Update (){

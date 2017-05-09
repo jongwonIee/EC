@@ -8,6 +8,12 @@ public class GameMgr : MonoBehaviour {
     public float createTime = 2.0f;
     public int maxMonster = 10;
     public bool isGameOver = false;
+    public static GameMgr instance = null;
+
+    void Awake ()
+    {
+        instance = this;
+    }
 
 	// Use this for initialization
 	void Start () {
@@ -31,7 +37,6 @@ public class GameMgr : MonoBehaviour {
                 yield return new WaitForSeconds(createTime);
 
                 int idx = Random.Range(1, points.Length);
-
                 Instantiate(monsterPrefab, points[idx].position, points[idx].rotation);
             }
             else
