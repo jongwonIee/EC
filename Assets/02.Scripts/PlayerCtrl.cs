@@ -4,4 +4,7 @@ using UnityEngine;
 
 
 public class PlayerCtrl : MonoBehaviour {
+    public void Awake() {
+        DontDestroyOnLoad(this.gameObject);
+    }
 }
