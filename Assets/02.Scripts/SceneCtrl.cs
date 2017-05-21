@@ -15,5 +15,4 @@ public class SceneCtrl : MonoBehaviour {
     void MoveStage(int stageNum) {
         SceneManager.LoadScene(stageNum + 2);
     }
-
 }
