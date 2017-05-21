@@ -44,14 +44,15 @@ public class MenuCtrl : MonoBehaviour {
     public void button_MainMenu() {
         Debug.Log(SceneManager.GetActiveScene().buildIndex);
         if (SceneManager.GetActiveScene().buildIndex != 1) {
-            SceneManager.LoadScene(1, LoadSceneMode.Single);
+            LoadingScreenManager.LoadScene(1);
             Time.timeScale = 1;
             list[0].SetActive(false);
             list[1].SetActive(false);
             list[2].SetActive(true);
             list[3].SetActive(false);
         } else {
-            //you are currently in main menu.
+            button_resume();
+            Debug.Log("asdfasd");
         }
     }
 
