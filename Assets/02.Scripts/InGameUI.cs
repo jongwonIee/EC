@@ -19,7 +19,6 @@ public class InGameUI : MonoBehaviour {
 	public int totMonster1 = 0;
 	public int totMonster2 = 0;
 	public int totMonster3 = 0;
-
     public GunFire gunFire;
     public PlayerCasting playerCasting;
 
@@ -48,8 +47,7 @@ public class InGameUI : MonoBehaviour {
     public void DispCount(int count)
     {
         totCount += count;
-        txtCount.text = "AREA1 : " + totCount.ToString();
-        
+        txtCount.text = "AREA1 : " + totCount.ToString();        
     }
     void Update (){
         RaycastHit hit;
