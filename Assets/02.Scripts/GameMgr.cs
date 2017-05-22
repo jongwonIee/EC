@@ -9,6 +9,7 @@ public class GameMgr : MonoBehaviour {
     public int maxMonster = 10;
     public bool isGameOver = false;
     public static GameMgr instance = null;
+    private InGameUI gameUI;
 
     void Awake ()
     {
@@ -17,12 +18,16 @@ public class GameMgr : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
         points = GameObject.Find("MonsterSpawnPoint").GetComponentsInChildren<Transform>();
+        gameUI = GameObject.Find ("InGameUI").GetComponent<InGameUI> ();
 
         if (points.Length > 0)
         {
             StartCoroutine(this.CreateMonster());
         }
+
+
 		
 	}
 
@@ -35,7 +40,7 @@ public class GameMgr : MonoBehaviour {
             if (monsterCount < maxMonster)
             {
                 yield return new WaitForSeconds(createTime);
-
+                gameUI.DispCount (1);
                 int idx = Random.Range(1, points.Length);
                 Instantiate(monsterPrefab, points[idx].position, points[idx].rotation);
             }
