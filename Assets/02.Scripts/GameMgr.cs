@@ -6,7 +6,7 @@ public class GameMgr : MonoBehaviour {
     public Transform[] points;
     public GameObject monsterPrefab;
     public float createTime = 2.0f;
-    public int maxMonster = 10;
+    public int maxMonster = 20;
     public bool isGameOver = false;
     public static GameMgr instance = null;
     private InGameUI gameUI;
@@ -37,7 +37,7 @@ public class GameMgr : MonoBehaviour {
         {
             int monsterCount = (int)GameObject.FindGameObjectsWithTag("MONSTER").Length;
 
-            if (monsterCount < maxMonster)
+            if (monsterCount <= maxMonster)
             {
                 yield return new WaitForSeconds(createTime);
                 gameUI.DispCount (1);
@@ -46,7 +46,8 @@ public class GameMgr : MonoBehaviour {
             }
             else
             {
-                yield return null;
+                Debug.Log("Game End!!");
+                isGameOver = true;
             }
         }
     }

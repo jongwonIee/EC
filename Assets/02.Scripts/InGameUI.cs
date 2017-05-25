@@ -21,32 +21,39 @@ public class InGameUI : MonoBehaviour {
 	public int totMonster1 = 0;
 	public int totMonster2 = 0;
 	public int totMonster3 = 0;
+    public int maxMonster = 0;
     public GunFire gunFire;
     public PlayerCasting playerCasting;
+
+    private GameMgr gameMgr;
+
 
 	// Use this for initialization
 	void Start () {
         highScore = PlayerPrefs.GetInt ("HIGH_SCORE");
    //     firePos = GameObject.FindGameObjectWithTag("Player").transform;
         DispScore (0);
-        DispCount (0);
         DispHighScore(0);
         FireRange = gunFire.Range;
         ActionRange = playerCasting.Range;
+        gameMgr = GameObject.Find ("GameManager").GetComponent<GameMgr> ();
+        DispCount (0);
 	}
 
 	public void DispScore(int score)
 	{
 		totScore += score;
         txtScore.text = "SCORE  : " + totScore.ToString();
-		PlayerPrefs.SetInt("HIGH_SCORE", totScore);
-
+        if (highScore < totScore)
+            PlayerPrefs.SetInt("HIGH_SCORE", totScore);
 	}
 
     public void DispCount(int count)
-    {
+    {   
+        maxMonster = gameMgr.maxMonster;
+        Debug.Log(maxMonster);
         totCount += count;
-        txtCount.text = "MONSTER COUNT : " + totCount.ToString();        
+        txtCount.text = "OVERFLOW : " + totCount.ToString() + "/" + maxMonster.ToString();        
     }
 
     public void DispHighScore(int score)
