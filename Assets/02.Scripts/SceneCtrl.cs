@@ -3,16 +3,20 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 
 public class SceneCtrl : MonoBehaviour {
+    public GameObject player;
     void Start() {
 
     }
     void Awake() {
         DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(player);
     }
     public void OnStartTouch() {
-        SceneManager.LoadScene("Menu");
+      LoadingScreenManager.LoadScene(1);
+      GameObject.Find("Main Camera").SetActive(false);
+
     }
     void MoveStage(int stageNum) {
-        SceneManager.LoadScene(stageNum + 2);
+      LoadingScreenManager.LoadScene(stageNum + 2);
     }
 }

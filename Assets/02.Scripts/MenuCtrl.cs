@@ -17,12 +17,11 @@ public class MenuCtrl : MonoBehaviour {
 
     void Start() {
         //listChild = Menu.GetComponentsInChildren<Transform>(true);
-            list = new GameObject[50];
+        list = new GameObject[50];
             list[0] = GameObject.Find("/Player/Menu/Menu_Panel");
             list[1] = GameObject.Find("/Player/Menu/Resume");
             list[2] = GameObject.Find("/Player/Menu/Pause");
             list[3] = GameObject.Find("/Player/Menu/Menu_Panel/ListOptions/Button_Options/Options");
-
     }
 
     public void button_pause() {

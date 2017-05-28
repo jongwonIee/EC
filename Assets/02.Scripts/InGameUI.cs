@@ -15,12 +15,12 @@ public class InGameUI : MonoBehaviour {
     public Text txtHighScore;
     public RawImage aimPoint;
     public RawImage aimPointCenter;
-	public int totScore = 0;
+    public int totScore = 0;
     public int totCount = 0;
     public int highScore = 0;
-	public int totMonster1 = 0;
-	public int totMonster2 = 0;
-	public int totMonster3 = 0;
+    public int totMonster1 = 0;
+    public int totMonster2 = 0;
+    public int totMonster3 = 0;
     public int maxMonster = 0;
     public GunFire gunFire;
     public PlayerCasting playerCasting;
