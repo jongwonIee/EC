@@ -13,15 +13,18 @@ public class InGameUI : MonoBehaviour {
     public Text txtScore;
     public Text txtCount;
     public Text txtHighScore;
+    public Text txtKillCount;
     public RawImage aimPoint;
     public RawImage aimPointCenter;
 	public int totScore = 0;
     public int totCount = 0;
     public int highScore = 0;
+    public int killCount = 0;
 	public int totMonster1 = 0;
 	public int totMonster2 = 0;
 	public int totMonster3 = 0;
     public int maxMonster = 0;
+    public int objMonster = 10;
     public GunFire gunFire;
     public PlayerCasting playerCasting;
 
@@ -31,13 +34,13 @@ public class InGameUI : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         highScore = PlayerPrefs.GetInt ("HIGH_SCORE");
-   //     firePos = GameObject.FindGameObjectWithTag("Player").transform;
-        DispScore (0);
-        DispHighScore(0);
         FireRange = gunFire.Range;
         ActionRange = playerCasting.Range;
         gameMgr = GameObject.Find ("GameManager").GetComponent<GameMgr> ();
+        DispScore (0);
+        DispHighScore(0);
         DispCount (0);
+        DispKill(0);
 	}
 
 	public void DispScore(int score)
@@ -45,13 +48,14 @@ public class InGameUI : MonoBehaviour {
 		totScore += score;
         txtScore.text = "SCORE  : " + totScore.ToString();
         if (highScore < totScore)
+        {
             PlayerPrefs.SetInt("HIGH_SCORE", totScore);
+        }
 	}
 
     public void DispCount(int count)
     {   
         maxMonster = gameMgr.maxMonster;
-        Debug.Log(maxMonster);
         totCount += count;
         txtCount.text = "OVERFLOW : " + totCount.ToString() + "/" + maxMonster.ToString();        
     }
@@ -60,6 +64,12 @@ public class InGameUI : MonoBehaviour {
     {
         highScore += score;
         txtHighScore.text = "HIGHSCORE : " + highScore.ToString();
+    }
+
+    public void DispKill(int kill)
+    {
+        killCount += kill;
+        txtKillCount.text = "KILL : " + killCount.ToString() + "/" + objMonster.ToString();
     }
 
     void Update (){

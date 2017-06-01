@@ -118,7 +118,9 @@ public class MonsterCtrl : MonoBehaviour {
 		}
         gameUI.DispScore (50);
 		Destroy (gameObject, 2);
+        gameUI.DispKill(1);
         gameUI.DispCount (-1);
+  
 	}
 
     void Attack() {
