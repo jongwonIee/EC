@@ -8,6 +8,8 @@ public class GameMgr : MonoBehaviour {
     public float createTime = 2.0f;
     public int maxMonster = 20;
     public bool isGameOver = false;
+    public bool isWin = false;
+    public bool isLose = false;
     public static GameMgr instance = null;
     private InGameUI gameUI;
 
@@ -27,8 +29,6 @@ public class GameMgr : MonoBehaviour {
             StartCoroutine(this.CreateMonster());
         }
 
-
-		
 	}
 
     IEnumerator CreateMonster()
@@ -46,7 +46,8 @@ public class GameMgr : MonoBehaviour {
             }
             else
             {
-                Debug.Log("Game End!!");
+                Debug.Log("OverFlow Lose");
+                isLose = true;
                 isGameOver = true;
             }
         }
@@ -54,10 +55,22 @@ public class GameMgr : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        
         if (Input.GetKeyDown("escape") || CnControls.CnInputManager.GetButtonDown("Escape"))
         {
             PlayerPrefs.Save();
             Application.Quit();
         }
+        KillCountCheck();
 	}
+
+    void KillCountCheck ()
+    {
+        if (gameUI.killCount >= gameUI.objMonster)
+        {
+            Debug.Log("killed all");
+            isWin = true;
+            isGameOver = true;
+        }
+    }
 }

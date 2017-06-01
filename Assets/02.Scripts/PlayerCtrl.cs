@@ -8,6 +8,7 @@ public class PlayerCtrl : MonoBehaviour {
     public int hp = 100;
     private int initHp;
     public Image imgHpbar;
+    public GameMgr gameMgr;
     private Transform tr;
   
     void Start(){
@@ -15,9 +16,12 @@ public class PlayerCtrl : MonoBehaviour {
 
         tr = GetComponent<Transform>();
 
+        gameMgr = GameObject.Find ("GameManager").GetComponent<GameMgr> ();
     }
+
     void Update(){
     }
+
     void OnTriggerEnter(Collider coll)
     {
         if (coll.gameObject.tag == "PUNCH")
@@ -43,6 +47,8 @@ public class PlayerCtrl : MonoBehaviour {
 
     void OnPlayerDie()
     {
-        Debug.Log("Game End!!");
+        Debug.Log("HP 0 Lose");
+        gameMgr.isLose = true;
+        gameMgr.isGameOver = true;
     }
 }
