@@ -28,8 +28,8 @@ public class MonsterCtrl : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		monsterTr = this.gameObject.GetComponent<Transform> ();
-		//slow so not in update func
-		playerTr = GameObject.FindWithTag ("Player").GetComponent<Transform> ();
+        //slow so not in update func
+        playerTr = GameObject.Find("Player").GetComponent<Transform> ();
 		nvAgent = this.gameObject.GetComponent<NavMeshAgent> ();
 		nvAgent.destination = playerTr.position;
 

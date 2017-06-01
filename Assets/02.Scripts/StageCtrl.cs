@@ -7,12 +7,11 @@ public class StageCtrl : MonoBehaviour {
     private Transform a;
     
     void Awake() {
-        DontDestroyOnLoad(GameObject.Find("Player"));
     }
     
     void OnTriggerEnter(Collider coll) {
         if (coll.tag == "Player") {
-            SceneManager.LoadScene(stageNum + 1);
+            LoadingScreenManager.LoadScene(stageNum + 1);
         }
     }
 }

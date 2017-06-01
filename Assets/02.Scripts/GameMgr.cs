@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEditor.SceneManagement;
 
 public class GameMgr : MonoBehaviour {
     public Transform[] points;
@@ -46,16 +48,33 @@ public class GameMgr : MonoBehaviour {
             }
             else
             {
-                Debug.Log("Game End!!");
                 isGameOver = true;
+                Debug.Log("aaaaa");
             }
         }
     }
-	
-	// Update is called once per frame
-	void Update () {
-        if (Input.GetKeyDown("escape") || CnControls.CnInputManager.GetButtonDown("Escape"))
-        {
+
+    public void button_Restart() {
+        Time.timeScale = 1;
+        //LoadingScreenManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
+    }
+    public void button_MainMenu() 
+       {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(1);
+
+        //LoadingScreenManager.LoadScene(1);
+    }
+    public GameObject GameOverUI;
+    // Update is called once per frame
+    void Update () {
+        if (isGameOver) {
+            Time.timeScale = 0;
+            GameOverUI.SetActive(true);
+        }
+        if (Input.GetKeyDown("escape") || CnControls.CnInputManager.GetButtonDown("Escape")) {
             PlayerPrefs.Save();
             Application.Quit();
         }

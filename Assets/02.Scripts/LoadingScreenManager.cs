@@ -35,7 +35,6 @@ public class LoadingScreenManager : MonoBehaviour {
     public static void LoadScene(int levelNum) {
         Application.backgroundLoadingPriority = ThreadPriority.High;
         sceneToLoad = levelNum;
-        Debug.Log("hi");
         SceneManager.LoadScene(loadingSceneIndex);
     }
 

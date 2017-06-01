@@ -6,9 +6,10 @@ public class PlayerSpawn : MonoBehaviour {
     public GameObject player;
     public GameObject pos;
     private void Awake() {
+        player = GameObject.Instantiate(player, pos.transform.position, new Quaternion(0,0,0,0));
+        player.name = "Player";
     }
     void Start () {
-        GameObject.Instantiate(player, pos.transform);
     }
 	void Update () {
 		
