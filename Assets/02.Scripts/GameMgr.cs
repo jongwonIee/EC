@@ -23,6 +23,7 @@ public class GameMgr : MonoBehaviour {
     private Image fireButton;
 //    public static GameMgr instance = null;
     public GameObject GameOverUI;
+    public bool isGame = false;
 
     void Awake ()
     {
@@ -79,14 +80,19 @@ public class GameMgr : MonoBehaviour {
             PlayerPrefs.Save();
             Application.Quit();
         }
-        KillCountCheck();
-        UltiCheck();
 
-        if(Time.time > nextTime){
-            nextTime = Time.time + Interval;
-            TimeCheck();
+        if (isGame)
+        {
+            
+            KillCountCheck();
+            UltiCheck();
+
+            if (Time.time > nextTime)
+            {
+                nextTime = Time.time + Interval;
+                TimeCheck();
+            }
         }
-
 	}
 
     public void button_Restart() {
