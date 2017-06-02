@@ -4,6 +4,8 @@ using UnityEngine;
 using System.Threading;
 using CnControls;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using UnityEditor.SceneManagement;
 
 public class GameMgr : MonoBehaviour {
     public Transform[] points;
@@ -19,6 +21,8 @@ public class GameMgr : MonoBehaviour {
     private float nextTime = 0.0f;
     private InGameUI gameUI;
     private Image fireButton;
+    public static GameMgr instance = null;
+    public GameObject GameOverUI;
 
     void Awake ()
     {
@@ -63,6 +67,12 @@ public class GameMgr : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+        if (isGameOver)
+        {
+            Time.timeScale = 0;
+            GameOverUI.SetActive(true);
+        }
         
         if (Input.GetKeyDown("escape") || CnControls.CnInputManager.GetButtonDown("Escape"))
         {
@@ -78,6 +88,20 @@ public class GameMgr : MonoBehaviour {
         }
 
 	}
+
+    public void button_Restart() {
+        Time.timeScale = 1;
+        //LoadingScreenManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
+    }
+    public void button_MainMenu() 
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(1);
+
+        //LoadingScreenManager.LoadScene(1);
+    }
 
     void KillCountCheck ()
     {
