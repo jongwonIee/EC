@@ -17,7 +17,7 @@ public class LoadingScreenManager : MonoBehaviour {
     public float fadeDuration = 0.25f;
 
     [Header("Loading Settings")]
-    public LoadSceneMode loadSceneMode = LoadSceneMode.Single;
+    public LoadSceneMode loadSceneMode = LoadSceneMode.Additive;
     public ThreadPriority loadThreadPriority;
 
     [Header("Other")]
@@ -30,11 +30,11 @@ public class LoadingScreenManager : MonoBehaviour {
     public static int sceneToLoad = -1;
     // IMPORTANT! This is the build index of your loading scene. You need to change this to match your actual scene index
     static int loadingSceneIndex = 3;
-
+    private void Awake() {
+    }
     public static void LoadScene(int levelNum) {
         Application.backgroundLoadingPriority = ThreadPriority.High;
         sceneToLoad = levelNum;
-        Debug.Log("hi");
         SceneManager.LoadScene(loadingSceneIndex);
     }
 

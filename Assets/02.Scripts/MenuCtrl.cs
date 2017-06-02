@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 public class MenuCtrl : MonoBehaviour {
     public GameObject Menu;
     public GameObject[] list;
-    public GameObject player;
     public Transform[] listChild;
     public bool OnMenu = false;
     int i;
@@ -16,14 +15,7 @@ public class MenuCtrl : MonoBehaviour {
     }
 
     void Start() {
-        //listChild = Menu.GetComponentsInChildren<Transform>(true);
-            list = new GameObject[50];
-            list[0] = GameObject.Find("/Player/Menu/Menu_Panel");
-            list[1] = GameObject.Find("/Player/Menu/Resume");
-            list[2] = GameObject.Find("/Player/Menu/Pause");
-            list[3] = GameObject.Find("/Player/Menu/Menu_Panel/ListOptions/Button_Options/Options");
-
-    }
+  }
 
     public void button_pause() {
         Time.timeScale = 0;
@@ -64,6 +56,7 @@ public class MenuCtrl : MonoBehaviour {
         Debug.Log("exit");
         Application.Quit();
     }
+
 
     //public void exitPause() {
     //    Time.timeScale = 1;

@@ -21,7 +21,7 @@ public class GameMgr : MonoBehaviour {
     private float nextTime = 0.0f;
     private InGameUI gameUI;
     private Image fireButton;
-    public static GameMgr instance = null;
+//    public static GameMgr instance = null;
     public GameObject GameOverUI;
 
     void Awake ()
