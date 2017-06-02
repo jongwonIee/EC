@@ -2,10 +2,7 @@
 using System.Collections;
 
 public class ActionCtrl : MonoBehaviour {
-    bool currState = false;
-    public AnimationClip doorClip;
-    public Animation[] doorAnim;
-    private int i = 0;
+    //MenuCtrl.MenuController.List[5];
     void Start () {
        
 	}
@@ -14,12 +11,6 @@ public class ActionCtrl : MonoBehaviour {
 	
 	}
 
-    void Action() {
-        if (!currState) { 
-            GetComponent<Animation>().Play("Door_Large_Open");
-        }
-        else if (currState) {
-            GetComponent<Animation>().Play("Door_Large_Close");
-        }
+    void Activate() {
     }
 }

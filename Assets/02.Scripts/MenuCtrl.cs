@@ -15,7 +15,6 @@ public class MenuCtrl : MonoBehaviour {
     int i;
     private bool statOn = false;
     private void Awake() {
-        DontDestroyOnLoad(this.gameObject);
         MenuController = this;
     }
 
@@ -78,22 +77,22 @@ public class MenuCtrl : MonoBehaviour {
         textList[7].gameObject.SetActive(true);
         textList[7].text = "LEVEL1-4:" + PlayerPrefs.GetInt("HIGH_SCORE_1_4");
         //textList[8].text = "PART1:" + PlayerPrefs.GetInt("");
-        if (PlayerPrefs.GetInt("puzzle_1_1_a") == 1) { textList[8].text = "PART1"; } else { textList[8].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_1_1_b") == 1) { textList[9].text = "PART2"; } else { textList[9].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_1_1_c") == 1) { textList[10].text = "PART3"; } else { textList[10].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_1_1_d") == 1) { textList[11].text = "PART4"; } else { textList[11].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_1_2_a") == 1) { textList[12].text = "PART1"; } else { textList[12].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_1_2_b") == 1) { textList[13].text = "PART2"; } else { textList[13].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_1_2_c") == 1) { textList[14].text = "PART3"; } else { textList[14].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_1_2_d") == 1) { textList[15].text = "PART4"; } else { textList[15].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_1_3_a") == 1) { textList[16].text = "PART1"; } else { textList[16].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_1_3_b") == 1) { textList[17].text = "PART2"; } else { textList[17].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_1_3_c") == 1) { textList[18].text = "PART3"; } else { textList[18].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_1_3_d") == 1) { textList[19].text = "PART4"; } else { textList[19].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_1_4_a") == 1) { textList[20].text = "PART1"; } else { textList[20].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_1_4_b") == 1) { textList[21].text = "PART2"; } else { textList[21].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_1_4_c") == 1) { textList[22].text = "PART3"; } else { textList[22].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_1_4_d") == 1) { textList[23].text = "PART4"; } else { textList[23].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_1_1_a") == 1) { textList[8].gameObject.SetActive(true); textList[8].text = "PART1"; } else { textList[8].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_1_1_b") == 1) { textList[9].gameObject.SetActive(true); textList[9].text = "PART2"; } else { textList[9].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_1_1_c") == 1) { textList[10].gameObject.SetActive(true); textList[10].text = "PART3"; } else { textList[10].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_1_1_d") == 1) { textList[11].gameObject.SetActive(true); textList[11].text = "PART4"; } else { textList[11].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_1_2_a") == 1) { textList[12].gameObject.SetActive(true); textList[12].text = "PART1"; } else { textList[12].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_1_2_b") == 1) { textList[13].gameObject.SetActive(true); textList[13].text = "PART2"; } else { textList[13].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_1_2_c") == 1) { textList[14].gameObject.SetActive(true); textList[14].text = "PART3"; } else { textList[14].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_1_2_d") == 1) { textList[15].gameObject.SetActive(true); textList[15].text = "PART4"; } else { textList[15].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_1_3_a") == 1) { textList[16].gameObject.SetActive(true); textList[16].text = "PART1"; } else { textList[16].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_1_3_b") == 1) { textList[17].gameObject.SetActive(true); textList[17].text = "PART2"; } else { textList[17].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_1_3_c") == 1) { textList[18].gameObject.SetActive(true); textList[18].text = "PART3"; } else { textList[18].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_1_3_d") == 1) { textList[19].gameObject.SetActive(true); textList[19].text = "PART4"; } else { textList[19].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_1_4_a") == 1) { textList[20].gameObject.SetActive(true); textList[20].text = "PART1"; } else { textList[20].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_1_4_b") == 1) { textList[21].gameObject.SetActive(true); textList[21].text = "PART2"; } else { textList[21].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_1_4_c") == 1) { textList[22].gameObject.SetActive(true); textList[22].text = "PART3"; } else { textList[22].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_1_4_d") == 1) { textList[23].gameObject.SetActive(true); textList[23].text = "PART4"; } else { textList[23].gameObject.SetActive(false); }
         textList[24].text = "STAGE1";
         statOn = true;
     }
@@ -110,22 +109,22 @@ public class MenuCtrl : MonoBehaviour {
         textList[6].text = "LEVEL 2-3:" + PlayerPrefs.GetInt("HIGH_SCORE_2_3");
         textList[7].gameObject.SetActive(true);
         textList[7].text = "LEVEL 2-4:" + PlayerPrefs.GetInt("HIGH_SCORE_2_4");
-        if (PlayerPrefs.GetInt("puzzle_2_1_a") == 1) { textList[8].text = "PART1"; } else { textList[8].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_2_1_b") == 1) { textList[9].text = "PART2"; } else { textList[9].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_2_1_c") == 1) { textList[10].text = "PART3"; } else { textList[10].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_2_1_d") == 1) { textList[11].text = "PART4"; } else { textList[11].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_2_2_a") == 1) { textList[12].text = "PART1"; } else { textList[12].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_2_2_b") == 1) { textList[13].text = "PART2"; } else { textList[13].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_2_2_c") == 1) { textList[14].text = "PART3"; } else { textList[14].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_2_2_d") == 1) { textList[15].text = "PART4"; } else { textList[15].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_2_3_a") == 1) { textList[16].text = "PART1"; } else { textList[16].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_2_3_b") == 1) { textList[17].text = "PART2"; } else { textList[17].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_2_3_c") == 1) { textList[18].text = "PART3"; } else { textList[18].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_2_3_d") == 1) { textList[19].text = "PART4"; } else { textList[19].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_2_4_a") == 1) { textList[20].text = "PART1"; } else { textList[20].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_2_4_b") == 1) { textList[21].text = "PART2"; } else { textList[21].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_2_4_c") == 1) { textList[22].text = "PART3"; } else { textList[22].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_2_4_d") == 1) { textList[23].text = "PART4"; } else { textList[23].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_2_1_a") == 1) { textList[8].gameObject.SetActive(true); textList[8].text = "PART1"; } else { textList[8].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_2_1_b") == 1) { textList[9].gameObject.SetActive(true); textList[9].text = "PART2"; } else { textList[9].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_2_1_c") == 1) { textList[10].gameObject.SetActive(true); textList[10].text = "PART3"; } else { textList[10].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_2_1_d") == 1) { textList[11].gameObject.SetActive(true); textList[11].text = "PART4"; } else { textList[11].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_2_2_a") == 1) { textList[12].gameObject.SetActive(true); textList[12].text = "PART1"; } else { textList[12].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_2_2_b") == 1) { textList[13].gameObject.SetActive(true); textList[13].text = "PART2"; } else { textList[13].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_2_2_c") == 1) { textList[14].gameObject.SetActive(true); textList[14].text = "PART3"; } else { textList[14].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_2_2_d") == 1) { textList[15].gameObject.SetActive(true); textList[15].text = "PART4"; } else { textList[15].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_2_3_a") == 1) { textList[16].gameObject.SetActive(true); textList[16].text = "PART1"; } else { textList[16].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_2_3_b") == 1) { textList[17].gameObject.SetActive(true); textList[17].text = "PART2"; } else { textList[17].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_2_3_c") == 1) { textList[18].gameObject.SetActive(true); textList[18].text = "PART3"; } else { textList[18].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_2_3_d") == 1) { textList[19].gameObject.SetActive(true); textList[19].text = "PART4"; } else { textList[19].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_2_4_a") == 1) { textList[20].gameObject.SetActive(true); textList[20].text = "PART1"; } else { textList[20].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_2_4_b") == 1) { textList[21].gameObject.SetActive(true); textList[21].text = "PART2"; } else { textList[21].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_2_4_c") == 1) { textList[22].gameObject.SetActive(true); textList[22].text = "PART3"; } else { textList[22].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_2_4_d") == 1) { textList[23].gameObject.SetActive(true); textList[23].text = "PART4"; } else { textList[23].gameObject.SetActive(false); }
         textList[24].text = "STAGE2";
         statOn = true;
     }
@@ -142,22 +141,22 @@ public class MenuCtrl : MonoBehaviour {
         textList[6].text = "LEVEL 3-3:" + PlayerPrefs.GetInt("HIGH_SCORE_3_3");
         textList[7].gameObject.SetActive(true);
         textList[7].text = "LEVEL 3-4:" + PlayerPrefs.GetInt("HIGH_SCORE_3_4");
-        if (PlayerPrefs.GetInt("puzzle_3_1_a") == 1) { textList[8].text = "PART1"; } else { textList[8].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_3_1_b") == 1) { textList[9].text = "PART2"; } else { textList[9].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_3_1_c") == 1) { textList[10].text = "PART3"; } else { textList[10].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_3_1_d") == 1) { textList[11].text = "PART4"; } else { textList[11].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_3_2_a") == 1) { textList[12].text = "PART1"; } else { textList[12].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_3_2_b") == 1) { textList[13].text = "PART2"; } else { textList[13].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_3_2_c") == 1) { textList[14].text = "PART3"; } else { textList[14].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_3_2_d") == 1) { textList[15].text = "PART4"; } else { textList[15].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_3_3_a") == 1) { textList[16].text = "PART1"; } else { textList[16].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_3_3_b") == 1) { textList[17].text = "PART2"; } else { textList[17].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_3_3_c") == 1) { textList[18].text = "PART3"; } else { textList[18].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_3_3_d") == 1) { textList[19].text = "PART4"; } else { textList[19].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_3_4_a") == 1) { textList[20].text = "PART1"; } else { textList[20].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_3_4_b") == 1) { textList[21].text = "PART2"; } else { textList[21].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_3_4_c") == 1) { textList[22].text = "PART3"; } else { textList[22].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_3_4_d") == 1) { textList[23].text = "PART4"; } else { textList[23].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_3_1_a") == 1) { textList[8].gameObject.SetActive(true); textList[8].text = "PART1"; } else { textList[8].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_3_1_b") == 1) { textList[9].gameObject.SetActive(true); textList[9].text = "PART2"; } else { textList[9].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_3_1_c") == 1) { textList[10].gameObject.SetActive(true); textList[10].text = "PART3"; } else { textList[10].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_3_1_d") == 1) { textList[11].gameObject.SetActive(true); textList[11].text = "PART4"; } else { textList[11].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_3_2_a") == 1) { textList[12].gameObject.SetActive(true); textList[12].text = "PART1"; } else { textList[12].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_3_2_b") == 1) { textList[13].gameObject.SetActive(true); textList[13].text = "PART2"; } else { textList[13].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_3_2_c") == 1) { textList[14].gameObject.SetActive(true); textList[14].text = "PART3"; } else { textList[14].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_3_2_d") == 1) { textList[15].gameObject.SetActive(true); textList[15].text = "PART4"; } else { textList[15].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_3_3_a") == 1) { textList[16].gameObject.SetActive(true); textList[16].text = "PART1"; } else { textList[16].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_3_3_b") == 1) { textList[17].gameObject.SetActive(true); textList[17].text = "PART2"; } else { textList[17].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_3_3_c") == 1) { textList[18].gameObject.SetActive(true); textList[18].text = "PART3"; } else { textList[18].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_3_3_d") == 1) { textList[19].gameObject.SetActive(true); textList[19].text = "PART4"; } else { textList[19].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_3_4_a") == 1) { textList[20].gameObject.SetActive(true); textList[20].text = "PART1"; } else { textList[20].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_3_4_b") == 1) { textList[21].gameObject.SetActive(true); textList[21].text = "PART2"; } else { textList[21].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_3_4_c") == 1) { textList[22].gameObject.SetActive(true); textList[22].text = "PART3"; } else { textList[22].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_3_4_d") == 1) { textList[23].gameObject.SetActive(true); textList[23].text = "PART4"; } else { textList[23].gameObject.SetActive(false); }
         textList[24].text = "STAGE3";
         statOn = true;
     }
@@ -174,22 +173,22 @@ public class MenuCtrl : MonoBehaviour {
         textList[6].text = "LEVEL 4-3:" + PlayerPrefs.GetInt("HIGH_SCORE_4_3");
         textList[7].gameObject.SetActive(true);
         textList[7].text = "LEVEL 4-4:" + PlayerPrefs.GetInt("HIGH_SCORE_4_4");
-        if (PlayerPrefs.GetInt("puzzle_4_1_a") == 1) { textList[8].text = "PART1"; } else { textList[8].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_4_1_b") == 1) { textList[9].text = "PART2"; } else { textList[9].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_4_1_c") == 1) { textList[10].text = "PART3"; } else { textList[10].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_4_1_d") == 1) { textList[11].text = "PART4"; } else { textList[11].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_4_2_a") == 1) { textList[12].text = "PART1"; } else { textList[12].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_4_2_b") == 1) { textList[13].text = "PART2"; } else { textList[13].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_4_2_c") == 1) { textList[14].text = "PART3"; } else { textList[14].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_4_2_d") == 1) { textList[15].text = "PART4"; } else { textList[15].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_4_3_a") == 1) { textList[12].text = "PART1"; } else { textList[16].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_4_3_b") == 1) { textList[13].text = "PART2"; } else { textList[17].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_4_3_c") == 1) { textList[14].text = "PART3"; } else { textList[18].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_4_3_d") == 1) { textList[15].text = "PART4"; } else { textList[19].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_4_4_a") == 1) { textList[12].text = "PART1"; } else { textList[20].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_4_4_b") == 1) { textList[13].text = "PART2"; } else { textList[21].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_4_4_c") == 1) { textList[14].text = "PART3"; } else { textList[22].gameObject.SetActive(false); }
-        if (PlayerPrefs.GetInt("puzzle_4_4_d") == 1) { textList[15].text = "PART4"; } else { textList[23].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_4_1_a") == 1) { textList[8].gameObject.SetActive(true); textList[8].text = "PART1"; } else { textList[8].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_4_1_b") == 1) { textList[9].gameObject.SetActive(true); textList[9].text = "PART2"; } else { textList[9].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_4_1_c") == 1) { textList[10].gameObject.SetActive(true); textList[10].text = "PART3"; } else { textList[10].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_4_1_d") == 1) { textList[11].gameObject.SetActive(true); textList[11].text = "PART4"; } else { textList[11].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_4_2_a") == 1) { textList[12].gameObject.SetActive(true); textList[12].text = "PART1"; } else { textList[12].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_4_2_b") == 1) { textList[13].gameObject.SetActive(true); textList[13].text = "PART2"; } else { textList[13].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_4_2_c") == 1) { textList[14].gameObject.SetActive(true); textList[14].text = "PART3"; } else { textList[14].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_4_2_d") == 1) { textList[15].gameObject.SetActive(true); textList[15].text = "PART4"; } else { textList[15].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_4_3_a") == 1) { textList[16].gameObject.SetActive(true); textList[12].text = "PART1"; } else { textList[16].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_4_3_b") == 1) { textList[17].gameObject.SetActive(true); textList[13].text = "PART2"; } else { textList[17].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_4_3_c") == 1) { textList[18].gameObject.SetActive(true); textList[14].text = "PART3"; } else { textList[18].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_4_3_d") == 1) { textList[19].gameObject.SetActive(true); textList[15].text = "PART4"; } else { textList[19].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_4_4_a") == 1) { textList[20].gameObject.SetActive(true); textList[12].text = "PART1"; } else { textList[20].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_4_4_b") == 1) { textList[21].gameObject.SetActive(true); textList[13].text = "PART2"; } else { textList[21].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_4_4_c") == 1) { textList[22].gameObject.SetActive(true); textList[14].text = "PART3"; } else { textList[22].gameObject.SetActive(false); }
+        if (PlayerPrefs.GetInt("puzzle_4_4_d") == 1) { textList[23].gameObject.SetActive(true); textList[15].text = "PART4"; } else { textList[23].gameObject.SetActive(false); }
         textList[24].text = "STAGE4";
         statOn = true;
     }
