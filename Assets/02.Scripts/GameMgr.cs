@@ -20,13 +20,14 @@ public class GameMgr : MonoBehaviour {
     private float Interval = 1.0f;
     private float nextTime = 0.0f;
     private InGameUI gameUI;
-    private Image fireButton;
-//    public static GameMgr instance = null;
+    public Image fireButton;
     public GameObject GameOverUI;
     public bool isGame = false;
     public int highScore = 0;
     public Text Score;
     public int headShotCount = 0;
+    public bool puzzle1c = false;
+    public bool puzzle1d = false;
     
     void Awake ()
     {
@@ -41,7 +42,6 @@ public class GameMgr : MonoBehaviour {
             highScore = PlayerPrefs.GetInt("HIGH_SCORE");
         }
         gameUI = GameObject.Find ("InGameUI").GetComponent<InGameUI> ();
-        fireButton = GameObject.Find("Fire").GetComponent<Image>();
 
         if (points.Length > 0)
         {
@@ -86,14 +86,12 @@ public class GameMgr : MonoBehaviour {
             PlayerPrefs.Save();
             Application.Quit();
         }
-        if (isGame) { 
         KillCountCheck();
         UltiCheck();
 
         if(Time.time > nextTime){
             nextTime = Time.time + Interval;
             TimeCheck();
-        }   
         }
     }
 
@@ -132,7 +130,7 @@ public class GameMgr : MonoBehaviour {
 
     void UltiCheck()
     {
-        if ( (gameUI.ulti == gameUI.maxUlti) && ultiOn == false )
+        if ( (gameUI.ulti >= gameUI.maxUlti) && ultiOn == false )
         {
             Debug.Log("Ulti on");
             ultiOn = true;

@@ -103,7 +103,7 @@ public class MonsterCtrl : MonoBehaviour {
         if (((bool)_params[1]) == true)//headshot
         {   
             hp -= GunHeadDamage;
-            gameUI.DispUlti(GunHeadUlti);    
+            gameUI.DispUlti(GunHeadUlti, false);    
             if (wasShot == false)//initial headshot
             {
                 gameUI.DispScore(GunHeadPoint);
@@ -117,7 +117,7 @@ public class MonsterCtrl : MonoBehaviour {
         {
             hp -= GunDamage;
             gameUI.DispScore(GunPoint);
-            gameUI.DispUlti(GunUlti);
+            gameUI.DispUlti(GunUlti, false);
         }
 
         wasShot = true;
