@@ -4,7 +4,12 @@ using UnityEngine.SceneManagement;
 
 public class StageCtrl : MonoBehaviour {
     public int stageNum;
+    private GameMgr gameMgr;
     private Transform a;
+
+    private void Start() {
+        gameMgr = GameObject.Find("GameManager").GetComponent<GameMgr>();
+    }
     
     void Awake() {
     }

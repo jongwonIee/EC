@@ -23,16 +23,22 @@ public class GameMgr : MonoBehaviour {
     private Image fireButton;
 //    public static GameMgr instance = null;
     public GameObject GameOverUI;
-
+    public bool isGame = false;
+    public int highScore = 0;
+    public Text Score;
+    
     void Awake ()
     {
         instance = this;
     }
 
-	// Use this for initialization
-	void Start () {
-
-        points = GameObject.Find("MonsterSpawnPoint").GetComponentsInChildren<Transform>();
+    // Use this for initialization
+    void Start() {
+        if (GameObject.Find("MonsterSpawnPoint")) {
+            points = GameObject.Find("MonsterSpawnPoint").GetComponentsInChildren<Transform>();
+            isGame = true;
+            highScore = PlayerPrefs.GetInt("HIGH_SCORE");
+        }
         gameUI = GameObject.Find ("InGameUI").GetComponent<InGameUI> ();
         fireButton = GameObject.Find("Fire").GetComponent<Image>();
 
@@ -70,8 +76,8 @@ public class GameMgr : MonoBehaviour {
 
         if (isGameOver)
         {
-            Time.timeScale = 0;
             GameOverUI.SetActive(true);
+            Score.text = "HIGHSCORE" + highScore.ToString();
         }
         
         if (Input.GetKeyDown("escape") || CnControls.CnInputManager.GetButtonDown("Escape"))
@@ -79,25 +85,24 @@ public class GameMgr : MonoBehaviour {
             PlayerPrefs.Save();
             Application.Quit();
         }
+        if (isGame) { 
         KillCountCheck();
         UltiCheck();
 
         if(Time.time > nextTime){
             nextTime = Time.time + Interval;
             TimeCheck();
+        }   
         }
-
-	}
+    }
 
     public void button_Restart() {
-        Time.timeScale = 1;
         //LoadingScreenManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
     }
     public void button_MainMenu() 
     {
-        Time.timeScale = 1;
         SceneManager.LoadScene(1);
 
         //LoadingScreenManager.LoadScene(1);
