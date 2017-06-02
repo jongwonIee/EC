@@ -38,14 +38,14 @@ public class PlayerCasting : MonoBehaviour {
                 }
             }
         }
-        if (!(PlayerPrefs.GetInt("puzzle_1_1_A") == 1)){
+        if (!(PlayerPrefs.GetInt("puzzle_1_1_a") == 1)){
             CheckPuzzleCount_1_1_A();
         }
         else {
             puzzleA.SetActive(true);
         }
 
-        if (!(PlayerPrefs.GetInt("puzzle_1_1_B") == 1)){
+        if (!(PlayerPrefs.GetInt("puzzle_1_1_b") == 1)){
             CheckPuzzleCount_1_1_B();
         }
         else
@@ -59,7 +59,7 @@ public class PlayerCasting : MonoBehaviour {
         if (puzzleCount == 3)
         {
             puzzleA.SetActive(true);
-            PlayerPrefs.SetInt("puzzle_1_1_A", 1);
+            PlayerPrefs.SetInt("puzzle_1_1_a", 1);
         }
     }
 
@@ -68,7 +68,7 @@ public class PlayerCasting : MonoBehaviour {
         if (gameMgr.headShotCount == 3)
         {
             puzzleB.SetActive(true);
-            PlayerPrefs.SetInt("puzzle_1_1_B", 1);
+            PlayerPrefs.SetInt("puzzle_1_1_b", 1);
         }
     }
 }
