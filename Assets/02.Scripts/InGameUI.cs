@@ -46,7 +46,7 @@ public class InGameUI : MonoBehaviour {
         DispTime(0);
         initUlti = ulti;
         imgUltibar.fillAmount = (float)ulti / (float)initUlti;
-        DispUlti(0);
+        DispUlti(0, false);
 	}
 
 	public void DispScore(int score)
@@ -84,11 +84,18 @@ public class InGameUI : MonoBehaviour {
         txtTimeLeft.text = "TIME LEFT : " + timeLeft.ToString();
     }
 
-    public void DispUlti(int charge)
-    {
-        if ( (ulti >= 0) && (ulti + charge >= 0) )
+    public void DispUlti(int charge, bool isUlti)
+    {   
+        if (isUlti)
         {
-            ulti += charge;
+            ulti = 0;
+        }
+        else
+        {
+            if ( (ulti >= 0) && (ulti + charge >= 0) )
+            {
+                ulti += charge;
+            }
         }
         imgUltibar.fillAmount = (float)ulti / (float)maxUlti;
     }

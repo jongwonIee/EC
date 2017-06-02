@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityStandardAssets.CrossPlatformInput;
+using System;
 
 public class GunFire : MonoBehaviour {
     public AudioClip fireSfx;
@@ -15,7 +16,9 @@ public class GunFire : MonoBehaviour {
 
     public InGameUI gameUI;
     public GameMgr gameMgr;
-    private Image fireButton;
+
+    public int monsterCount;
+    public Array monsters;
 
     void Start() 
     {   
@@ -23,7 +26,6 @@ public class GunFire : MonoBehaviour {
         gunanim = GetComponent<Animation>();
         gameUI = GameObject.Find ("InGameUI").GetComponent<InGameUI> ();
         gameMgr = GameObject.Find ("GameManager").GetComponent<GameMgr> ();
-        fireButton = GameObject.Find("Fire").GetComponent<Image>();
     }
 
 	void Update () {
@@ -63,16 +65,34 @@ public class GunFire : MonoBehaviour {
                 }
                 else
                 {
-                    gameUI.DispUlti(-10);
+                    gameUI.DispUlti(-10, false);
                 }
             }
             else
             {
+                monsterCount = (int)GameObject.FindGameObjectsWithTag("MONSTER").Length;
+                if (monsterCount >= 3)
+                {
+                    gameMgr.puzzle1c = true;
+                }
                 //ulti
                 UltiFire();
-                fireButton.color = Color.white;
+
+
+                monsters = GameObject.FindGameObjectsWithTag("MONSTER");
+                foreach (GameObject monster in monsters)
+                {
+                    object[] _params = new object[2];
+
+                    _params[1] = true;
+                    monster.SendMessageUpwards("OnDamage"
+                        , _params
+                        , SendMessageOptions.DontRequireReceiver);
+                }
+
+                gameMgr.fireButton.color = Color.white;
                 gameMgr.ultiOn = false;
-                gameUI.DispUlti(-100);
+                gameUI.DispUlti(0, true);
             }
                 //gunfire delay
                 EnableScript();

@@ -52,6 +52,22 @@ public class PlayerCasting : MonoBehaviour {
         {
             puzzleB.SetActive(true);
         }
+
+        if (!(PlayerPrefs.GetInt("puzzle_1_1_c") == 1)){
+            CheckPuzzleCount_1_1_C();
+        }
+        else
+        {
+            puzzleC.SetActive(true);
+        }
+
+        if (!(PlayerPrefs.GetInt("puzzle_1_1_h") == 1)){
+            CheckPuzzleCount_1_1_H();
+        }
+        else
+        {
+            puzzleH.SetActive(true);
+        }
     }
 
     void CheckPuzzleCount_1_1_A()
@@ -69,6 +85,30 @@ public class PlayerCasting : MonoBehaviour {
         {
             puzzleB.SetActive(true);
             PlayerPrefs.SetInt("puzzle_1_1_b", 1);
+        }
+    }
+
+    void CheckPuzzleCount_1_1_C()
+    {
+        int monsterCount = (int)GameObject.FindGameObjectsWithTag("MONSTER").Length;
+        if (gameMgr.puzzle1c == true)
+        {
+            puzzleC.SetActive(true);
+            PlayerPrefs.SetInt("puzzle_1_1_c", 1);
+        }
+    }
+
+    void CheckPuzzleCount_1_1_H()
+    {
+        if ( (PlayerPrefs.GetInt("puzzle_1_1_a") == 1) && (PlayerPrefs.GetInt("puzzle_1_1_b") == 1) && (PlayerPrefs.GetInt("puzzle_1_1_c") == 1) )
+        {
+            PlayerPrefs.SetInt("puzzle_1_1_h", 1);
+        }
+            
+        if (gameMgr.puzzle1d == true)
+        {
+            puzzleH.SetActive(true);
+            PlayerPrefs.SetInt("puzzle_1_1_h", 1);
         }
     }
 }

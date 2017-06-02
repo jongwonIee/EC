@@ -31,7 +31,7 @@ public class PlayerCtrl : MonoBehaviour {
         {
             hp -= 10;
             imgHpbar.fillAmount = (float)hp / (float)initHp;
-            gameUI.DispUlti(-10);
+            gameUI.DispUlti(-10, false);
             Debug.Log(hp);
         }
 
