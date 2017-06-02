@@ -35,7 +35,7 @@ public class InGameUI : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        highScore = PlayerPrefs.GetInt ("HIGH_SCORE");
+        highScore = PlayerPrefs.GetInt ("HIGH_SCORE_1_1");
         FireRange = gunFire.Range;
         ActionRange = playerCasting.Range;
         gameMgr = GameObject.Find ("GameManager").GetComponent<GameMgr> ();
@@ -55,7 +55,7 @@ public class InGameUI : MonoBehaviour {
         txtScore.text = "SCORE  : " + totScore.ToString();
         if (highScore < totScore)
         {
-            PlayerPrefs.SetInt("HIGH_SCORE", totScore);
+            PlayerPrefs.SetInt("HIGH_SCORE_1_1", totScore);
         }
 	}
 

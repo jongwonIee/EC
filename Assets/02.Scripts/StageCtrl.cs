@@ -8,7 +8,7 @@ public class StageCtrl : MonoBehaviour {
     private Transform a;
 
     private void Start() {
-        gameMgr = GameObject.Find("GameManager").GetComponent<GameMgr>();
+//        gameMgr = GameObject.Find("GameManager").GetComponent<GameMgr>();
     }
     
     void Awake() {

@@ -26,6 +26,7 @@ public class GameMgr : MonoBehaviour {
     public bool isGame = false;
     public int highScore = 0;
     public Text Score;
+    public int headShotCount = 0;
     
     void Awake ()
     {
