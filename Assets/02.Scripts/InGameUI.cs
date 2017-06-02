@@ -14,21 +14,23 @@ public class InGameUI : MonoBehaviour {
     public Text txtCount;
     public Text txtHighScore;
     public Text txtKillCount;
+    public Text txtTimeLeft;
     public RawImage aimPoint;
     public RawImage aimPointCenter;
 	public int totScore = 0;
     public int totCount = 0;
     public int highScore = 0;
     public int killCount = 0;
-	public int totMonster1 = 0;
-	public int totMonster2 = 0;
-	public int totMonster3 = 0;
+    public int timeLeft = 120;
     public int maxMonster = 0;
     public int objMonster = 10;
     public GunFire gunFire;
     public PlayerCasting playerCasting;
-
     private GameMgr gameMgr;
+    public int ulti = 0;
+    public int maxUlti = 100;
+    private int initUlti;
+    public Image imgUltibar;
 
 
 	// Use this for initialization
@@ -41,6 +43,10 @@ public class InGameUI : MonoBehaviour {
         DispHighScore(0);
         DispCount (0);
         DispKill(0);
+        DispTime(0);
+        initUlti = ulti;
+        imgUltibar.fillAmount = (float)ulti / (float)initUlti;
+        DispUlti(0);
 	}
 
 	public void DispScore(int score)
@@ -70,6 +76,21 @@ public class InGameUI : MonoBehaviour {
     {
         killCount += kill;
         txtKillCount.text = "KILL : " + killCount.ToString() + "/" + objMonster.ToString();
+    }
+
+    public void DispTime(int time)
+    {
+        timeLeft -= time;
+        txtTimeLeft.text = "TIME LEFT : " + timeLeft.ToString();
+    }
+
+    public void DispUlti(int charge)
+    {
+        if ( (ulti >= 0) && (ulti + charge >= 0) )
+        {
+            ulti += charge;
+        }
+        imgUltibar.fillAmount = (float)ulti / (float)maxUlti;
     }
 
     void Update (){

@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading;
+using CnControls;
+using UnityEngine.UI;
 
 public class GameMgr : MonoBehaviour {
     public Transform[] points;
@@ -10,8 +13,12 @@ public class GameMgr : MonoBehaviour {
     public bool isGameOver = false;
     public bool isWin = false;
     public bool isLose = false;
+    public bool ultiOn = false;
     public static GameMgr instance = null;
+    private float Interval = 1.0f;
+    private float nextTime = 0.0f;
     private InGameUI gameUI;
+    private Image fireButton;
 
     void Awake ()
     {
@@ -23,6 +30,7 @@ public class GameMgr : MonoBehaviour {
 
         points = GameObject.Find("MonsterSpawnPoint").GetComponentsInChildren<Transform>();
         gameUI = GameObject.Find ("InGameUI").GetComponent<InGameUI> ();
+        fireButton = GameObject.Find("Fire").GetComponent<Image>();
 
         if (points.Length > 0)
         {
@@ -62,6 +70,13 @@ public class GameMgr : MonoBehaviour {
             Application.Quit();
         }
         KillCountCheck();
+        UltiCheck();
+
+        if(Time.time > nextTime){
+            nextTime = Time.time + Interval;
+            TimeCheck();
+        }
+
 	}
 
     void KillCountCheck ()
@@ -71,6 +86,27 @@ public class GameMgr : MonoBehaviour {
             Debug.Log("killed all");
             isWin = true;
             isGameOver = true;
+        }
+    }
+
+    void TimeCheck()
+    {
+        gameUI.DispTime(1);
+        if (gameUI.timeLeft == 0)
+        {
+            Debug.Log("survived!");
+            isWin = true;
+            isGameOver = true;
+        }
+    }
+
+    void UltiCheck()
+    {
+        if ( (gameUI.ulti == gameUI.maxUlti) && ultiOn == false )
+        {
+            Debug.Log("Ulti on");
+            ultiOn = true;
+            fireButton.color = Color.green;
         }
     }
 }

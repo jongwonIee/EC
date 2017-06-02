@@ -15,6 +15,14 @@ public class MonsterCtrl : MonoBehaviour {
 	public float traceDist = 20.0f;
 	public float attackDist = 2.0f;
 
+    public int GunDamage = 5;
+    public int GunHeadDamage = 15;
+    public int GunPoint = 20;
+    public int GunHeadPoint = 100;
+    public int GunUlti = 10;
+    public int GunHeadUlti = 20;
+
+    public bool wasShot = false;
 	private bool isDie = false;
     private bool isHit = false;
 
@@ -25,10 +33,8 @@ public class MonsterCtrl : MonoBehaviour {
 
 	private InGameUI gameUI;
 
-	// Use this for initialization
 	void Start () {
 		monsterTr = this.gameObject.GetComponent<Transform> ();
-		//slow so not in update func
 		playerTr = GameObject.FindWithTag ("Player").GetComponent<Transform> ();
 		nvAgent = this.gameObject.GetComponent<NavMeshAgent> ();
 		nvAgent.destination = playerTr.position;
@@ -79,8 +85,6 @@ public class MonsterCtrl : MonoBehaviour {
 					nvAgent.Resume ();
 					animator.SetBool ("IsAttack", false);
 					animator.SetBool ("IsTrace", true);
-//                    monsterTr.LookAt(playerTr.position);
-//                    slerp
 				break;
                 case MonsterState.attack:
                     nvAgent.Stop();
@@ -96,8 +100,28 @@ public class MonsterCtrl : MonoBehaviour {
         isHit = true;
 		animator.SetTrigger("IsHit");
         Debug.Log("Hit!");
-        hp -= (int) _params[1];
-        gameUI.DispScore ((int) _params[2]);
+        if (((bool)_params[1]) == true)//headshot
+        {   
+            hp -= GunHeadDamage;
+            gameUI.DispUlti(GunHeadUlti);    
+            if (wasShot == false)//initial headshot
+            {
+                gameUI.DispScore(GunHeadPoint);
+            }
+            else//headshot but not initial
+            {
+                gameUI.DispScore(GunPoint);
+            }
+        }
+        else//not headshot
+        {
+            hp -= GunDamage;
+            gameUI.DispScore(GunPoint);
+            gameUI.DispUlti(GunUlti);
+        }
+
+        wasShot = true;
+
         if (hp <= 0.0f)
         {
             MonsterDie();
@@ -116,7 +140,6 @@ public class MonsterCtrl : MonoBehaviour {
 		foreach (Collider coll in gameObject.GetComponentsInChildren<BoxCollider>()) {
 			coll.enabled = false;
 		}
-        gameUI.DispScore (50);
 		Destroy (gameObject, 2);
         gameUI.DispKill(1);
         gameUI.DispCount (-1);

@@ -10,6 +10,7 @@ public class PlayerCtrl : MonoBehaviour {
     public Image imgHpbar;
     public GameMgr gameMgr;
     private Transform tr;
+    private InGameUI gameUI;
   
     void Start(){
         initHp = hp;
@@ -17,6 +18,8 @@ public class PlayerCtrl : MonoBehaviour {
         tr = GetComponent<Transform>();
 
         gameMgr = GameObject.Find ("GameManager").GetComponent<GameMgr> ();
+        gameUI = GameObject.Find ("InGameUI").GetComponent<InGameUI> ();
+
     }
 
     void Update(){
@@ -27,6 +30,8 @@ public class PlayerCtrl : MonoBehaviour {
         if (coll.gameObject.tag == "PUNCH")
         {
             hp -= 10;
+            imgHpbar.fillAmount = (float)hp / (float)initHp;
+            gameUI.DispUlti(-10);
             Debug.Log(hp);
         }
 
@@ -39,9 +44,7 @@ public class PlayerCtrl : MonoBehaviour {
     void PlayerDie()
     {
         Debug.Log("Player Die!!");
-
         OnPlayerDie();
-
         GameMgr.instance.isGameOver = true;
     }
 
