@@ -73,6 +73,7 @@ public class GunFire : MonoBehaviour {
                 gameMgr.ultiOn = false;
                 gameUI.DispUlti(-100);
             }
+                //gunfire delay
                 EnableScript();
         }
 	}
@@ -88,8 +89,14 @@ public class GunFire : MonoBehaviour {
     }
 
     void UltiFire()
-    {
+    {   
         Debug.Log("ulti fired!");
+        gunanim.Play();
+        _audio.PlayOneShot(fireSfx, 1.0f);
+        gameUI.aimPoint.color = Color.white;
+        gameUI.aimPointCenter.color = Color.white; 
+        this.GetComponent<GunFire>().enabled=false;
+        gameUI.enabled = false;
     }
 
     void EnableScript()
