@@ -39,6 +39,10 @@ public class GunFire : MonoBehaviour {
 
                 if (Physics.Raycast(firePos.position, firePos.TransformDirection(Vector3.forward), out hit, Range, 1 << 10 | 1 << 11))
                 {
+                    if (hit.collider.tag == "ACTIVATION") {
+                        Debug.Log("view_stats");
+                        hit.collider.gameObject.SendMessage("activate");
+                    }
                     if (hit.collider.tag == "HEAD")
                     {
                         object[] _params = new object[2];

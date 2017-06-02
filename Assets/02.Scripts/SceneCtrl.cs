@@ -3,13 +3,11 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 
 public class SceneCtrl : MonoBehaviour {
-    public GameObject player;
+    MenuCtrl MenuController;
     void Awake() {
-        DontDestroyOnLoad(this.gameObject);
     }
 
     void Start() {
-
     }
     public void OnStartTouch() {
       LoadingScreenManager.LoadScene(1);

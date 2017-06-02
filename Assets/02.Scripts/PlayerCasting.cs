@@ -28,7 +28,9 @@ public class PlayerCasting : MonoBehaviour {
             if (Physics.Raycast (firePos.position, firePos.TransformDirection(Vector3.forward), out hit))
             {
                 TargetDistance = hit.distance;
-
+                if (TargetDistance < Range && hit.collider.tag == "ACTIVATION"){
+                    hit.collider.SendMessage("Activate");
+                }
                 if (TargetDistance < Range && hit.collider.tag == "OBJECT")
                 {
                     lightObject = hit.transform.Find("lightObject").gameObject;
