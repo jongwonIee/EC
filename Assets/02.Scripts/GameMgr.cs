@@ -5,7 +5,6 @@ using System.Threading;
 using CnControls;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using UnityEditor.SceneManagement;
 
 public class GameMgr : MonoBehaviour {
     public Transform[] points;
