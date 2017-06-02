@@ -47,6 +47,7 @@ public class GunFire : MonoBehaviour {
                                                             , _params
                                                             , SendMessageOptions.DontRequireReceiver);
                         Debug.Log("HEADSHOT");
+                        gameMgr.headShotCount += 1;
                     }
                     else
                     {
